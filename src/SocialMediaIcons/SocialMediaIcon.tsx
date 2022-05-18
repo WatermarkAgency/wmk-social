@@ -1,37 +1,31 @@
 import * as React from "react";
-import { Anchor } from "../Anchor";
-import PropTypes from "prop-types";
+import { LinkTarget, WmkLink } from "wmk-link";
 
-const SocialMediaIcon = React.forwardRef(
-  ({ platform, url, target, className }, ref) => {
+interface SocialsProps {
+  platform: { Icon: JSX.Element; name: string };
+  url: string;
+  target?: LinkTarget;
+  className?: string;
+}
+
+const SocialMediaIcon = React.forwardRef<HTMLDivElement, SocialsProps>(
+  ({ platform, url, target = "blank", className = "" }: SocialsProps, ref) => {
     const { Icon, name } = platform;
     const _className = name + (className !== "" ? " " + className : "");
     return (
-      <Anchor
+      <WmkLink
         key={name}
         to={url}
         target={target}
         className={_className}
         ref={ref}>
-        <Icon />
+        {Icon}
         <span className="sr-only sr-only-focusable">
           {"Open " + name + " page"}
         </span>
-      </Anchor>
+      </WmkLink>
     );
   }
 );
 
 export default SocialMediaIcon;
-
-SocialMediaIcon.propTypes = {
-  platform: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired,
-  target: PropTypes.string,
-  className: PropTypes.string
-};
-
-SocialMediaIcon.defaultProps = {
-  target: "_blank",
-  className: ""
-};
