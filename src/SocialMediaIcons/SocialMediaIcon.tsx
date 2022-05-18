@@ -20,8 +20,8 @@ const SocialMediaIcon = React.forwardRef<HTMLDivElement, SocialsProps>(
         className={_className}
         ref={ref}>
         {Icon}
-        <span className="sr-only sr-only-focusable">
-          {"Open " + name + " page"}
+        <span className="sr-only sr-only-focusable visually-hidden visually-hidden-focusable">
+          {"Visit " + name + " page"}
         </span>
       </WmkLink>
     );
