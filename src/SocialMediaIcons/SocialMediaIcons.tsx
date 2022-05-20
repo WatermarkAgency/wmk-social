@@ -62,7 +62,7 @@ export const SocialMediaIcons = ({
     return p in platforms ? (
       platforms[p]
     ) : (
-      <div>Error: No Icon in platform definition for {p}</div>
+      <>{console.log(`Error: No Icon in platform definition for ${p}`)}</>
     );
   };
   const _className = wmkClass("icon", "social", className);
