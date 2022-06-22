@@ -12,7 +12,7 @@ const SocialMediaIcon = React.forwardRef<HTMLDivElement, SocialsProps>(
   ({ platform, url, target = "blank", className = "" }: SocialsProps, ref) => {
     const { Icon, name } = platform;
     const _className = name + (className !== "" ? " " + className : "");
-    return (
+    return Icon ? (
       <WmkLink
         key={name}
         to={url}
@@ -22,10 +22,10 @@ const SocialMediaIcon = React.forwardRef<HTMLDivElement, SocialsProps>(
         title={"Visit " + name + " page"}>
         {Icon}
         <span className="sr-only sr-only-focusable visually-hidden visually-hidden-focusable">
-          {"Visit " + name + " page"}
+          {"Visit " + name.toLocaleLowerCase() + " page"}
         </span>
       </WmkLink>
-    );
+    ) : null;
   }
 );
 
